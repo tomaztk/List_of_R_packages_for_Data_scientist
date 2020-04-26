@@ -16,6 +16,17 @@
 # R Environment
 installed_packages <- installed.packages()
 
+# Helper install function
+
+# Loop through the list of packages
+install_and_load_all <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if (length(new.pkg)) 
+    install.packages(new.pkg, dependencies = TRUE)
+  sapply(pkg, require, character.only = TRUE)
+}
+
+
 
 ##################################
 ### 1. Loading and importing data
@@ -39,6 +50,10 @@ install.packages("sparkavro", dependencies = TRUE)
 # Reading from Parquet file
 install.packages("arrow", dependencies = TRUE)
 devtools::install_github("apache/arrow/r")
+# Reading between R and Python
+install.packages("feather", dependencies = TRUE)
+# Reading from XML
+install.packages("XML", dependencies = TRUE)
 
 
 #1.2. Loading from ODBC databases
@@ -61,15 +76,33 @@ install.packages(c("RSQLite","sqliter","dbflobr"), dependencies = TRUE)
 install.packages(c("RSQL","sqldf","poplite","queryparser"), dependencies = TRUE)
 
 
-ßall_loading_packages <- c("Hmisc", "foreign")
-
-#2. Manipulating Data
-
-
+all_loading_packages <- c("Hmisc", "foreign","protr","csv","readr","tidyverse","readxl","xlsx","jsonLite","rjson","RJSONIO","jsonvalidate",
+                          "sparkavro","arrow","XML","odbc","RODBC","mssqlR", "RODBC","RMySQL","dbConnect","postGIStools","RPostgreSQL",
+                          "RRedshiftSQL","RSQLite","sqliter","dbflobr","RSQL","sqldf","poplite","queryparser")
 
 
-#3. Testing and Sampling Data
+install_and_load_all(all_loading_packages)
 
+
+##################################
+### 2. Manipulating Data
+##################################
+
+
+#1.1. Cleaning data
+install.packages(c("janitor","outliers","missForest","frequency","Amelia","diffobj","mice","VIM","Bioconductor","mi","wrangle"), dependencies = TRUE)
+
+#1.2. Dealing with R data types and formats
+install.packages(c("stringr","lubridate","glue","scales","hablar","readr"), dependencies = TRUE)
+
+
+#1.3. Sub-seting and aggregating data
+install.packages(c("dplyr","tidyverse","purr","magrittr","data.table","plyr","tidyr","tibble","reshape2"), dependencies = TRUE)
+
+
+##################################
+### 3. Testing and Sampling Data
+##################################
 
 
 
@@ -93,8 +126,8 @@ install.packages(c("RSQL","sqldf","poplite","queryparser"), dependencies = TRUE)
 
 
 
-#8. Web Scraping 
-
+#8. Web Scraping
+# rvest
 
 
 
@@ -104,7 +137,7 @@ install.packages(c("RSQL","sqldf","poplite","queryparser"), dependencies = TRUE)
 
 
 #10. Saving and exporting data
-
+#openxlsx
 
 
 #installing sparktly for R 3.6.3
@@ -119,9 +152,8 @@ install.packages(c("RODBC","json", "XML"), dependencies = TRUE)
 install.packages("dockerfiler", dependencies = TRUE)
 
 install.packages(c("DBI","odbc","RMySQL","RPostgresSQL","RSQLite","XLConnect","xlsx","foreign","haven"), dependencies = TRUE)
-                  
+
 
 install.packages(c("dplyr", "lubridate", "plyr", "stringr", "tidyr", "zoo", "xts", "quantmod", "jsonlite", "httr", "devtools",
                    "sp", "maps", "ggmap", "xtable", "markdown", "caret", "survival", "glmnet", "vcd", "randomForest", "lme4" ,"nime", 
                    "mgcv", "car", "rgl", "ggvis", "htmlwidgets", "colorbrewer"), dependencies = TRUE)
-

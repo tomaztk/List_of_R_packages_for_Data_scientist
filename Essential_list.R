@@ -90,7 +90,8 @@ install_and_load_all(all_loading_packages)
 
 
 #2.1. Cleaning data
-install.packages(c("janitor","outliers","missForest","frequency","Amelia","diffobj","mice","VIM","Bioconductor","mi","wrangle"), dependencies = TRUE)
+install.packages(c("janitor","outliers","missForest","frequency","Amelia","diffobj",
+                   "mice","VIM","Bioconductor","mi","wrangle", "mitools"), dependencies = TRUE)
 
 #2.2. Dealing with R data types and formats
 install.packages(c("stringr","lubridate","glue","scales","hablar","readr"), dependencies = TRUE)
@@ -143,7 +144,8 @@ install.packages(c("caret","rio","car","MASS","FuzzyNumbers","stats","ez"), depe
 #4.3. Multivariate analysis
 install.packages(c("psych","CCA","CCP","MASS","icapca","gvlma","smacof","MVN","rpca","gpca","EFA.MRFA","MFAg"
                    ,"MVar","fabMix","fad","spBFA","cate","mnlfa","CSFA","GFA"
-                   ,"lmds","SPCALDA","semds", "superMDS", "vcd", "vcdExtra"), dependencies = TRUE)
+                   ,"lmds","SPCALDA","semds", "superMDS", "vcd", "vcdExtra",
+                   "ks", "rrcov","Hmisc", "eRm","MNP", "bayesm", "sem","ltm"), dependencies = TRUE)
 
 
 
@@ -152,23 +154,24 @@ install.packages(c("psych","CCA","CCP","MASS","icapca","gvlma","smacof","MVN","r
 install.packages(c("fpc","cluster","treeClust","e1071","NbClust","skmeans","kml","compHclust","protoclust","pvclust","genie", "tclust",
                    "ClusterR","dbscan","CEC","GMCM","EMCluster","randomLCA", "MOCCA","factoextra","poLCA"), dependencies = TRUE)
 #classification
-install.packages(c("tree"), dependencies = TRUE)
+install.packages(c("tree", "e1071"), dependencies = TRUE)
 
 
 #4.5. Analysis of Time-series
 install.packages(c("ts","zoo","xts","timeSeries","tsModel", "TSMining","TSA","fma","fpp2",
                    "fpp3","tsfa","TSdist","TSclust","feasts", "MTS", "dse","sazedR","kza",
-                   "fable","forecast","tseries"), dependencies = TRUE)
+                   "fable","forecast","tseries","nnfor","quantmod"), dependencies = TRUE)
 
 
 #4.6. Network analysis
+install.packages(c("fastnet","tsna","sna","networkR","InteractiveIGraph","SemNeT","igraph",
+                   "NetworkToolbox","dyads", "staTools","CINNA"),  dependencies = TRUE)
 
 
-#4.7. Analysis of text
-
-#4.7. Geo analysis
-# sampling data: spsample, spcosa
-
+#4.7. Text analysis
+install.packages(c("tm","tau","koRpus","lexicon","sylly","textir","textmineR",
+                   "MediaNews", "lsa","SemNeT","ngram","ngramrr","corpustools",
+                   "udpipe","textstem", "tidytext","text2vec"), dependencies = TRUE)
 
 all_statistical_packages <- c("")
 
@@ -181,26 +184,43 @@ install_and_load_all(all_statistical_packages)
 ##################################
 
 
-#5.1. Building and training the models
+#5.1. Building and Validating the models
+install.packages(c("tree", "e1071","crossval","caret","rpart","bcv","klaR","EnsembleCV","gencve","cvAUC",
+                   "CVThresh", "cvTools","dcv","cvms","blockCV"), dependencies = TRUE)
 
-#5.2. Validating the models
 
-#5.3. Classification methods
+#5.2. Random forests packages
+install.packages(c("randomForest","grf","ipred","party","randomForestSRC","grf","BART",
+                   "Boruta","LTRCtrees","REEMtree","refr","binomialRF","superml"), dependencies = TRUE)
 
-#5.4. Regression methods
-#"earth"
 
-#5.5. Clustering  methods
+#5.3. Regression type (regression, boosting, Gradient descent) algoritms packages
+install.packages(c("earth", "gbm","GAMBoost", "GMMBoost", "bst","superml","sboost"), dependencies = TRUE)
 
-#5.6. Deep Learning
 
-#5.7. Reinforcement Learning
+#5.4. Classification algorithms
+install.packages(c("rpart", "tree", "C50", "RWeka","klar", "e1071","kernlab",
+                   "svmpath","superml","sboost"), dependencies = TRUE)
+
+#5.5. Neural Networks  
+install.packages(c("nnet","gnn","rnn","spnn","brnn","RSNNS","AMORE","simpleNeural","ANN2","yap",
+                   "yager","deep","neuralnet","nnfor","TeachNet"), dependencies = TRUE)
+
+
+#5.6. Deep Learning  
+install.packages(c("deepnet","RcppDL","tensorflow","h2o","kerasR","deepNN", "Buddle","automl"), dependencies = TRUE)
+
+
+#5.7. Reinforcement Learning algorithms and Markov decision process
+devtools::install_github("nproellochs/ReinforcementLearning")
+install.packages(c("RLT","ReinforcementLearning","MDPtoolbox"), dependencies = TRUE)
 
 #5.8. Parallel computational packages
 #revoscale, MicrosoftML, ...
 
 
 #5.9. Model explaination and explainability
+install.packages(c("lime","localModel","iml","EIX","flashlight","interpret","outliertree","breakDown"), dependencies = TRUE)
 
 
 all_ML_packages <- c("")
@@ -216,18 +236,22 @@ install_and_load_all(all_ML_packages)
 devtools::install_github("rstudio/sparklyr")
 library(sparklyr)
 
-install.packages("dockerfiler", dependencies = TRUE)
+install.packages(c("dockerfiler","azuremlsdk","sparklyr","cloudml"), dependencies = TRUE)
 
 
 ##################################
 ### 7. Visualisation
 ##################################
-
+install.packages(c("ggvis","htmlwidgets","maps","sunburstR", "lattice","predict3d","rgl","rglwidget","plot3Drgl",
+                   "ggmap","ggplot2","plotly","RColorBrewer","dygraphs","canvasXpress","qgraph",
+                   "moveVis","ggcharts","igraph","visNetwork","visreg", "VIM", "sjPlot", "plotKML", "squash",
+                   "statVisual", "mlr3viz", "klaR","DiagrammeR","pavo","rasterVis","timelineR",
+                   "DataViz","d3r","d3heatmap","dashboard", "highcharter","rbokeh"), dependencies = TRUE)
 
 ##################################
 ### 8. Web Scraping
 ##################################
-# rvest
+install.packages(c("rvest","Rcrawler","ralger","scrapeR"), dependencies = TRUE)
 
 
 ##################################
@@ -235,16 +259,8 @@ install.packages("dockerfiler", dependencies = TRUE)
 ###    books organisation
 ##################################
 
-#knittr, Rmarkdown
-
-
-#10. Saving and exporting data
-#openxlsx
+install.packages(c("devtools","usethis","roxygen2","knitr","rmarkdown","flexdashboard","Shiny",
+                   "xtable","httr","profvis"), dependencies = TRUE)
 
 
 
-install.packages(c("DBI","odbc","RMySQL","RPostgresSQL","RSQLite","XLConnect","xlsx","foreign","haven"), dependencies = TRUE)
-
-install.packages(c("dplyr", "lubridate", "plyr", "stringr", "tidyr", "zoo", "xts", "quantmod", "jsonlite", "httr", "devtools",
-                   "sp", "maps", "ggmap", "xtable", "markdown", "caret", "survival", "glmnet", "vcd", "randomForest", "lme4" ,"nime", 
-                   "mgcv", "car", "rgl", "ggvis", "htmlwidgets", "colorbrewer"), dependencies = TRUE)

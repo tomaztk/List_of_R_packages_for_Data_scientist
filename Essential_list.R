@@ -12,15 +12,12 @@
 
 #########################################
 
-# Store installed packages for your current
-# R Environment
+# Store installed packages for your current R Environment
 installed_packages <- installed.packages()
-
-# Helper install function
 
 # Loop through the list of packages
 install_and_load_all <- function(pkg){
-  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  new_pkg <- pkg[!(pkg %in% installed_packages[, "Package"])]
   if (length(new.pkg)) 
     install.packages(new.pkg, dependencies = TRUE)
   sapply(pkg, require, character.only = TRUE)
@@ -31,6 +28,7 @@ install_and_load_all <- function(pkg){
 ##################################
 ### 1. Loading and importing data
 ##################################
+
 
 #1.1. Loading from binary files
 # Reading from SAS and SPSS
@@ -74,6 +72,8 @@ install.packages(c("RRedshiftSQL"), dependencies = TRUE)
 install.packages(c("RSQLite","sqliter","dbflobr"), dependencies = TRUE)
 #General SQL packages
 install.packages(c("RSQL","sqldf","poplite","queryparser"), dependencies = TRUE)
+# InfluxDb
+install.packages("influxdbr", dependencies = TRUE)
 
 
 all_loading_packages <- c("Hmisc", "foreign","protr","csv","readr","tidyverse","readxl","xlsx","jsonLite","rjson","RJSONIO","jsonvalidate",
@@ -89,70 +89,161 @@ install_and_load_all(all_loading_packages)
 ##################################
 
 
-#1.1. Cleaning data
+#2.1. Cleaning data
 install.packages(c("janitor","outliers","missForest","frequency","Amelia","diffobj","mice","VIM","Bioconductor","mi","wrangle"), dependencies = TRUE)
 
-#1.2. Dealing with R data types and formats
+#2.2. Dealing with R data types and formats
 install.packages(c("stringr","lubridate","glue","scales","hablar","readr"), dependencies = TRUE)
 
 
-#1.3. Sub-seting and aggregating data
+#2.3. Sub-seting and aggregating data
 install.packages(c("dplyr","tidyverse","purr","magrittr","data.table","plyr","tidyr","tibble","reshape2"), dependencies = TRUE)
+
+
+all_manipulating_packages <- c("janitor","outliers","missForest","frequency","Amelia","diffobj","mice","VIM","Bioconductor","mi","wrangle",
+                               "stringr","lubridate","glue","scales","hablar","readr",
+                               "dplyr","tidyverse","purr","magrittr","data.table","plyr","tidyr","tibble","reshape2")
+
+
+
+install_and_load_all(all_manipulating_packages)
 
 
 ##################################
 ### 3. Testing and Sampling Data
 ##################################
 
+#3.1 Statistical tests (Wilcox, T-test, Shapiro, levene, etc.)
+install.packages(c("stats","ggpubr","lme4","MASS","car","nortest","lmtest"), dependencies = TRUE)
+
+#3.2 Data Sampling
+install.packages(c("sampling","icarus","sampler","SamplingStrata","survey","laeken","stratification","simPop"), dependencies = TRUE)
 
 
-#4. Statistical Analysis
+all_test_and_sampling_packages <- c("stats","ggpubr","lme4","MASS","sampling","icarus","sampler","SamplingStrata",
+                                     "survey","laeken","stratification","simPop","nortest","lmtest","car")
+
+
+install_and_load_all(all_test_and_sampling_packages)
+
+
+##################################
+### 4. Statistical Analysis
+##################################
+
+#4.1. Regression Analysis
+install.packages(c("stats","Lars","caret","survival","gam","glmnet","quantreg","sgd","BLR","MASS",
+                   "car","mlogit","earth","faraway","nortest","lmtest","nlme",
+                   "splines","sem","WLS","OLS","pls","2SLS","3SLS","tree","rpart"), dependencies = TRUE)
+
+#4.2. Analysis of variance
+install.packages(c("caret","rio","car","MASS","FuzzyNumbers","stats","ez"), dependencies = TRUE)
+
+
+#4.3. Multivariate analysis
+install.packages(c("psych","CCA","CCP","MASS","icapca","gvlma","smacof","MVN","rpca","gpca","EFA.MRFA","MFAg"
+                   ,"MVar","fabMix","fad","spBFA","cate","mnlfa","CSFA","GFA"
+                   ,"lmds","SPCALDA","semds", "superMDS", "vcd", "vcdExtra"), dependencies = TRUE)
 
 
 
-
-#5. Machine Learning
-
-
-
-
-#6. Extensibility to use cloud and databases
-
+#4.4. Classification and Clustering
+#clustering
+install.packages(c("fpc","cluster","treeClust","e1071","NbClust","skmeans","kml","compHclust","protoclust","pvclust","genie", "tclust",
+                   "ClusterR","dbscan","CEC","GMCM","EMCluster","randomLCA", "MOCCA","factoextra","poLCA"), dependencies = TRUE)
+#classification
+install.packages(c("tree"), dependencies = TRUE)
 
 
+#4.5. Analysis of Time-series
+install.packages(c("ts","zoo","xts","timeSeries","tsModel", "TSMining","TSA","fma","fpp2",
+                   "fpp3","tsfa","TSdist","TSclust","feasts", "MTS", "dse","sazedR","kza",
+                   "fable","forecast","tseries"), dependencies = TRUE)
 
-#7. Visualisation
+
+#4.6. Network analysis
 
 
+#4.7. Analysis of text
+
+#4.7. Geo analysis
+# sampling data: spsample, spcosa
 
 
-#8. Web Scraping
+all_statistical_packages <- c("")
+
+
+install_and_load_all(all_statistical_packages)
+
+
+##################################
+### 5. Machine Learning
+##################################
+
+
+#5.1. Building and training the models
+
+#5.2. Validating the models
+
+#5.3. Classification methods
+
+#5.4. Regression methods
+#"earth"
+
+#5.5. Clustering  methods
+
+#5.6. Deep Learning
+
+#5.7. Reinforcement Learning
+
+#5.8. Parallel computational packages
+#revoscale, MicrosoftML, ...
+
+
+#5.9. Model explaination and explainability
+
+
+all_ML_packages <- c("")
+
+
+install_and_load_all(all_ML_packages)
+
+
+##################################
+### 6. Extensibility to cloud 
+##################################
+
+devtools::install_github("rstudio/sparklyr")
+library(sparklyr)
+
+install.packages("dockerfiler", dependencies = TRUE)
+
+
+##################################
+### 7. Visualisation
+##################################
+
+
+##################################
+### 8. Web Scraping
+##################################
 # rvest
 
 
+##################################
+### 9. Documents and 
+###    books organisation
+##################################
 
-#9. Documents and books organisation
-
-
+#knittr, Rmarkdown
 
 
 #10. Saving and exporting data
 #openxlsx
 
 
-#installing sparktly for R 3.6.3
-devtools::install_github("rstudio/sparklyr")
-
-
-library(sparklyr)
-
-
-install.packages(c("RODBC","json", "XML"), dependencies = TRUE)
-
-install.packages("dockerfiler", dependencies = TRUE)
 
 install.packages(c("DBI","odbc","RMySQL","RPostgresSQL","RSQLite","XLConnect","xlsx","foreign","haven"), dependencies = TRUE)
-
 
 install.packages(c("dplyr", "lubridate", "plyr", "stringr", "tidyr", "zoo", "xts", "quantmod", "jsonlite", "httr", "devtools",
                    "sp", "maps", "ggmap", "xtable", "markdown", "caret", "survival", "glmnet", "vcd", "randomForest", "lme4" ,"nime", 

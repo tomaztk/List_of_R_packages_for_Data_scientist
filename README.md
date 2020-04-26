@@ -1,2 +1,2 @@
-# List_of_R_packages_for_Data_scientist
+# List of R packages for Statisticians and Data scientists
 List of useful R packages for data scientists

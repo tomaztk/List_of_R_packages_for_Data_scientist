@@ -17,8 +17,9 @@
 installed_packages <- installed.packages()
 
 
-
-#1. Loading and importing data
+##################################
+### 1. Loading and importing data
+##################################
 
 #1.1. Loading from binary files
 # Reading from SAS and SPSS
@@ -118,8 +119,9 @@ install.packages(c("RODBC","json", "XML"), dependencies = TRUE)
 install.packages("dockerfiler", dependencies = TRUE)
 
 install.packages(c("DBI","odbc","RMySQL","RPostgresSQL","RSQLite","XLConnect","xlsx","foreign","haven"), dependencies = TRUE)
-                   ,"nime", "mgcv", "car", "rgl", "ggvis", "htmlwidgets", "colorbrewer"), dependencies = TRUE)
+                  
 
 install.packages(c("dplyr", "lubridate", "plyr", "stringr", "tidyr", "zoo", "xts", "quantmod", "jsonlite", "httr", "devtools",
-                   "sp", "maps", "ggmap", "xtable", "markdown", "caret", "survival", "glmnet", "vcd", "randomForest", "lme4"
+                   "sp", "maps", "ggmap", "xtable", "markdown", "caret", "survival", "glmnet", "vcd", "randomForest", "lme4" ,"nime", 
+                   "mgcv", "car", "rgl", "ggvis", "htmlwidgets", "colorbrewer"), dependencies = TRUE)
 
